@@ -84,6 +84,8 @@ namespace EMusic.Application.Services
 
         private async Task DownloadMusicsSoundCloud(ChromeDriver _chromeDriverInstance, List<string> liUrlsMusic)
         {
+            await Task.Run(() => { 
+
             foreach (var item in liUrlsMusic)
             {
                 _chromeDriverInstance.Url = "https://scloudtomp3downloader.com/";
@@ -96,8 +98,9 @@ namespace EMusic.Application.Services
 
                 _chromeDriverInstance.FindElement(By.XPath("//a[@class='btn btn-success btn-sq btn-dl']")).Click();
             }
-
+            });
         }
+
 
         private static bool ExistErrorOnConverter(ChromeDriver _chromeDriverInstance)
         {
