@@ -14,17 +14,17 @@ namespace Infrastructure.Services.Services
         {
             string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             string pathSoundCloud = Path.Combine(userPath, pathFolderStream);
-            var botFilePaths = Directory.GetFiles(pathSoundCloud);
+            var musicPath = Directory.GetFiles(pathSoundCloud);
 
             var zipFileMemoryStream = new MemoryStream();
             using (ZipArchive archive = new ZipArchive(zipFileMemoryStream, ZipArchiveMode.Update, leaveOpen: true))
             {
-                foreach (var botFilePath in botFilePaths)
+                foreach (var music in musicPath)
                 {
-                    var botFileName = Path.GetFileName(botFilePath);
-                    var entry = archive.CreateEntry(botFileName);
+                    var musicFileName = Path.GetFileName(music);
+                    var entry = archive.CreateEntry(musicFileName);
                     using var entryStream = entry.Open();
-                    using var fileStream = System.IO.File.OpenRead(botFilePath);
+                    using var fileStream = System.IO.File.OpenRead(music);
                     await fileStream.CopyToAsync(entryStream);
                 }
             }
