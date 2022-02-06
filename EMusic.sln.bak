@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emusic.Infra.Ioc", "Emusic.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMusic.Infra.Data", "EMusic.Infra.Data\EMusic.Infra.Data.csproj", "{72D180F9-59A7-42ED-ACA2-4EE521A122A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMusic.Infrastructure.Services", "EMusic.Infrastructure.Services\EMusic.Infrastructure.Services.csproj", "{6D0B86F2-BAF3-4DDB-B121-F9D9097049D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMusic.Infrastructure.Services", "Infrastructure.Services\EMusic.Infrastructure.Services.csproj", "{6D0B86F2-BAF3-4DDB-B121-F9D9097049D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

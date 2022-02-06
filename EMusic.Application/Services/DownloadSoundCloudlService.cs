@@ -1,5 +1,6 @@
 ﻿using EMusic.Application.Interfaces;
-using Infrastructure.Services.Interfaces;
+using EMusic.Infrastructure.Services;
+using EMusic.Infrastructure.Services;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;

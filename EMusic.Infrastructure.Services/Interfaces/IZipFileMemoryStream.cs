@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Services.Interfaces
+namespace EMusic.Infrastructure.Services
 {
     public interface IZipFileMemoryStream
     {
