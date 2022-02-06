@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EMusic.Infra.Data\EMusic.Infra.Data.csproj" />
-    <ProjectReference Include="..\EMusic.Infrastructure.Services\EMusic.Infrastructure.Services.csproj" />
+    <ProjectReference Include="..\EMusic.Infrastructure.Services\EMusic.Infra.Services.csproj" />
     <ProjectReference Include="..\Infrastructure.Services\EMusic.Infrastructure.Services.csproj" />
   </ItemGroup>
 

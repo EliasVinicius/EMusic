@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EMusic.Application\EMusic.Application.csproj" />
-    <ProjectReference Include="..\EMusic.Infrastructure.Services\EMusic.Infrastructure.Services.csproj" />
+    <ProjectReference Include="..\EMusic.Infrastructure.Services\EMusic.Infra.Services.csproj" />
   </ItemGroup>
 
 </Project>
