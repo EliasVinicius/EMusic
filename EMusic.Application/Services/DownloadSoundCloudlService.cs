@@ -53,9 +53,9 @@ namespace EMusic.Application.Services
             //{
             //}
 
-            var taskfinal = DownloadMusicsSoundCloud(_chromeDriverInstance, AddHrefLinkInList(_chromeDriverInstance));
+            var taskDownloadMusicsSoundCloud = DownloadMusicsSoundCloud(_chromeDriverInstance, AddHrefLinkInList(_chromeDriverInstance));
 
-            await Task.WhenAll(taskfinal);
+            await Task.WhenAll(taskDownloadMusicsSoundCloud);
             await Task.Delay(60000);
 
             Dispose(_chromeDriverInstance);
