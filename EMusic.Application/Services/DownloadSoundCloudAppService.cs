@@ -49,7 +49,7 @@ namespace EMusic.Application.Services
              DownloadMusicsSoundCloud(_chromeDriverInstance, AddHrefLinkInList(_chromeDriverInstance));
 
             var zipFiles =  await UtilShared.ZipFiles(pathSoundCloud);
-
+            await Task.Delay(10000);
             UtilShared.DeleteArquives(pathSoundCloud);
 
             Dispose(_chromeDriverInstance);
