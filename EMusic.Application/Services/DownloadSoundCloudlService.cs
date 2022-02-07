@@ -27,7 +27,7 @@ namespace EMusic.Application.Services
 
         }
 
-        public async Task<MemoryStream> ProcessDownload(Uri? url)
+        private async Task<MemoryStream> ProcessDownload(Uri? url)
         {
 
             string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -63,14 +63,15 @@ namespace EMusic.Application.Services
 
             return await _zipFileMemoryStreamService.ZipFile(pathSoundCloud);
         }
-        private static void Dispose(ChromeDriver _chromeDriverInstance)
+
+        static void Dispose(ChromeDriver _chromeDriverInstance)
         {
             _chromeDriverInstance.Close();
             _chromeDriverInstance.Quit();
             _chromeDriverInstance.Dispose();
         }
 
-        private static List<string> AddHrefLinkInList(ChromeDriver _chromeDriverInstance)
+        static List<string> AddHrefLinkInList(ChromeDriver _chromeDriverInstance)
         {
             List<string> liUrlsDeMusicas = new List<string>();
 
@@ -83,27 +84,28 @@ namespace EMusic.Application.Services
             return liUrlsDeMusicas;
         }
 
-        private async Task DownloadMusicsSoundCloud(ChromeDriver _chromeDriverInstance, List<string> liUrlsMusic)
+        static async Task DownloadMusicsSoundCloud(ChromeDriver _chromeDriverInstance, List<string> liUrlsMusic)
         {
-            await Task.Run(() => { 
-
-            foreach (var item in liUrlsMusic)
+            await Task.Run(() =>
             {
-                _chromeDriverInstance.Url = "https://scloudtomp3downloader.com/";
 
-                _chromeDriverInstance.FindElement(By.XPath("//input[@name= 'url']")).SendKeys(item);
+                foreach (var item in liUrlsMusic)
+                {
+                    _chromeDriverInstance.Url = "https://scloudtomp3downloader.com/";
 
-                _chromeDriverInstance.FindElement(By.XPath("//button[@class= 'btn btn-warning btn-download']")).Click();
+                    _chromeDriverInstance.FindElement(By.XPath("//input[@name= 'url']")).SendKeys(item);
 
-                if (ExistErrorOnConverter(_chromeDriverInstance)) continue;
+                    _chromeDriverInstance.FindElement(By.XPath("//button[@class= 'btn btn-warning btn-download']")).Click();
 
-                _chromeDriverInstance.FindElement(By.XPath("//a[@class='btn btn-success btn-sq btn-dl']")).Click();
-            }
+                    if (ExistErrorOnConverter(_chromeDriverInstance)) continue;
+
+                    _chromeDriverInstance.FindElement(By.XPath("//a[@class='btn btn-success btn-sq btn-dl']")).Click();
+                }
             });
         }
 
 
-        private static bool ExistErrorOnConverter(ChromeDriver _chromeDriverInstance)
+        static bool ExistErrorOnConverter(ChromeDriver _chromeDriverInstance)
         {
             List<IWebElement> liErrorElements = new List<IWebElement>();
             liErrorElements.AddRange(_chromeDriverInstance.FindElements
