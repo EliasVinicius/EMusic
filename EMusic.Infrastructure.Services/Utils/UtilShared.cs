@@ -1,16 +1,26 @@
-﻿using EMusic.Infrastructure.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Services.Services
+namespace EMusic.Infra.Services.Utils
 {
-    public class ZipFileMemoryStreamService : IZipFileMemoryStream
+    public static class UtilShared
     {
-        public async Task<MemoryStream> ZipFile(string pathFolderStream)
+        public static void DeleteArquives(string path)
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(path);
+
+            foreach (var file in directoryInfo.GetFiles())
+            {
+                file.Delete();
+            }
+            Directory.Delete(path);
+        }
+
+        public static async Task<MemoryStream> ZipFiles(string pathFolderStream)
         {
             string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             string pathSoundCloud = Path.Combine(userPath, pathFolderStream);
@@ -31,19 +41,7 @@ namespace Infrastructure.Services.Services
 
             zipFileMemoryStream.Seek(0, SeekOrigin.Begin);
 
-            DeleteArchives(pathSoundCloud);
             return zipFileMemoryStream;
-        }
-
-        private void DeleteArchives(string pathSoundCloud)
-        {
-            DirectoryInfo di = new DirectoryInfo(pathSoundCloud);
-
-            foreach (var file in di.GetFiles())
-            {
-                file.Delete();
-            }
-            Directory.Delete(pathSoundCloud);
         }
     }
 }

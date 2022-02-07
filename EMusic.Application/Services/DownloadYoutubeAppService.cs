@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EMusic.Application.Services
 {
-    public class DownloadYoutubeService : IDownloadYoutubeService
+    public class DownloadYoutubeAppService : IDownloadYoutubeAppService
     {
         public Task<MemoryStream> Download(Uri url)
         {

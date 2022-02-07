@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EMusic.Application.Interfaces
 {
-    public interface IDownloadBase
+    public interface IDownloadBaseAppService
     {
         Task<MemoryStream> Download(Uri url);
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EMusic.Application.Interfaces
 {
-    public interface IDownloadYoutubeService : IDownloadBase
+    public interface IDownloadSoundCloudAppService : IDownloadBaseAppService
     {
     }
 }

@@ -8,9 +8,9 @@ namespace EMusic.API.Controllers
     [Route("api/[controller]")]
     public class DownloadController : ControllerBase
     {
-        readonly IDownloadSoundCloudlService _downloadService;
+        readonly IDownloadSoundCloudAppService _downloadService;
 
-        public DownloadController(IDownloadSoundCloudlService downloadService)
+        public DownloadController(IDownloadSoundCloudAppService downloadService)
         {
             _downloadService = downloadService;
         }

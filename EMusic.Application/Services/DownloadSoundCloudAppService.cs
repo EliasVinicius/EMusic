@@ -1,21 +1,14 @@
 ﻿using EMusic.Application.Interfaces;
-using EMusic.Infrastructure.Services;
-using EMusic.Infrastructure.Services;
+using EMusic.Infra.Services.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 
 namespace EMusic.Application.Services
 {
-    public class DownloadSoundCloudlService : IDownloadSoundCloudlService
+    public class DownloadSoundCloudAppService : IDownloadSoundCloudAppService
     {
-        readonly IZipFileMemoryStream _zipFileMemoryStreamService;
         const string PathElementsSoundCloud = "//a[@class = 'sc-link-primary soundTitle__title sc-link-dark sc-text-h4']";
 
-        public DownloadSoundCloudlService(IZipFileMemoryStream zipFileMemoryStreamService)
-        {
-            _zipFileMemoryStreamService = zipFileMemoryStreamService;
-        }
         public async Task<MemoryStream> Download(Uri urlSoundCloud)
         {
             if (!urlSoundCloud.IsAbsoluteUri)
@@ -32,7 +25,6 @@ namespace EMusic.Application.Services
 
             string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             string pathSoundCloud = Path.Combine(userPath, @"C:\SoundCloud");
-
 
             if (!Directory.Exists(pathSoundCloud))
             {
@@ -54,14 +46,15 @@ namespace EMusic.Application.Services
             //{
             //}
 
-            var taskDownloadMusicsSoundCloud = DownloadMusicsSoundCloud(_chromeDriverInstance, AddHrefLinkInList(_chromeDriverInstance));
+             DownloadMusicsSoundCloud(_chromeDriverInstance, AddHrefLinkInList(_chromeDriverInstance));
 
-            await Task.WhenAll(taskDownloadMusicsSoundCloud);
-            await Task.Delay(60000);
+            var zipFiles =  await UtilShared.ZipFiles(pathSoundCloud);
+
+            UtilShared.DeleteArquives(pathSoundCloud);
 
             Dispose(_chromeDriverInstance);
 
-            return await _zipFileMemoryStreamService.ZipFile(pathSoundCloud);
+            return zipFiles;
         }
 
         static void Dispose(ChromeDriver _chromeDriverInstance)
@@ -84,11 +77,8 @@ namespace EMusic.Application.Services
             return liUrlsDeMusicas;
         }
 
-        static async Task DownloadMusicsSoundCloud(ChromeDriver _chromeDriverInstance, List<string> liUrlsMusic)
+        static void DownloadMusicsSoundCloud(ChromeDriver _chromeDriverInstance, List<string> liUrlsMusic)
         {
-            await Task.Run(() =>
-            {
-
                 foreach (var item in liUrlsMusic)
                 {
                     _chromeDriverInstance.Url = "https://scloudtomp3downloader.com/";
@@ -101,7 +91,6 @@ namespace EMusic.Application.Services
 
                     _chromeDriverInstance.FindElement(By.XPath("//a[@class='btn btn-success btn-sq btn-dl']")).Click();
                 }
-            });
         }
 
 
