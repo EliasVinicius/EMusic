@@ -13,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EMusic.Application\EMusicSelenium.Application.csproj" />
-    <ProjectReference Include="..\EMusic.Infra.Data\EMusicSelenium.Infra.Data.csproj" />
-    <ProjectReference Include="..\Emusic.Infra.Ioc\EmusicSelenium.Infra.Ioc.csproj" />
+    <ProjectReference Include="..\EMusicSelenium.Application\EMusicSelenium.Application.csproj" />
+    <ProjectReference Include="..\EMusicSelenium.Infra.Data\EMusicSelenium.Infra.Data.csproj" />
+    <ProjectReference Include="..\EMusicSelenium.Infra.Ioc\EmusicSelenium.Infra.Ioc.csproj" />
   </ItemGroup>
 
 </Project>

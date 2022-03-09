@@ -17,9 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EMusic.Infra.Data\EMusicSelenium.Infra.Data.csproj" />
-    <ProjectReference Include="..\EMusic.Infrastructure.Services\EMusicSelenium.Infra.Services.csproj" />
-    <ProjectReference Include="..\Infrastructure.Services\EMusic.Infrastructure.Services.csproj" />
+    <ProjectReference Include="..\EMusicSelenium.Infra.Data\EMusicSelenium.Infra.Data.csproj" />
+    <ProjectReference Include="..\EMusicSelenium.Infrastructure.Services\EMusicSelenium.Infra.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
